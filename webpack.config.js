@@ -8,7 +8,10 @@ module.exports = {
     app: './src/index.js',
     print: './src/print.js'
   },
-  devtool: 'inline-source-map',
+  devtool: 'inline-source-map',//inline-source-map仅适用于开发环境
+  devServer:{
+    contentBase: './dist' //将 dist 目录下的文件，作为可访问文件。
+  },
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
@@ -18,6 +21,7 @@ module.exports = {
   output: {
     // filename: 'bundle.js',
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
 };
